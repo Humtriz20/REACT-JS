@@ -1,0 +1,42 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body{
+    /* font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    width:100%
+}
+/* Custom CSS for styling the thumb */
+/* For Webkit (Chrome, Safari, newer versions of Opera) */
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background-color: white; /* Set the background color of the thumb */
+    border-radius: 50%;
+  }
+  
+  /* For Mozilla Firefox */
+  input[type="range"]::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background-color: white; /* Set the background color of the thumb */
+    border-radius: 50%;
+  }
+  
+  /* For Microsoft Edge and Internet Explorer */
+  input[type="range"]::-ms-thumb {
+    width: 12px;
+    height: 12px;
+    background-color: white; /* Set the background color of the thumb */
+    border-radius: 50%;
+  }
+  .dark-mode {
+    background-color: #1a1a1a; /* Change this to your desired dark background color */
+    color: #ffffff; /* Change this to your desired dark text color */
+  }
+  .app-container.dark-mode {
+    background-color: #393737 !important;
+    color: #ffffff !important;
+  }
+    
