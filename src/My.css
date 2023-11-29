@@ -1,0 +1,291 @@
+*{
+  margin: 0;
+  padding: 0;
+  
+}
+body{
+  background: rgb(212, 212, 233);
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.redbutton{
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  width: 50px;
+  height: 30px;
+  margin: 20px;
+  cursor: pointer;
+  gap: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.navbar{
+  background-color: orange;
+  text-decoration: none;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+} 
+navbar ul{
+   display: flex; 
+   list-style: none;
+}
+.navbar li {
+  display: inline-block;
+  margin-right: 2rem; 
+   margin-left: 60px;
+  
+  text-decoration: none; 
+} 
+.navLink {
+  text-decoration: none;
+  color: white;
+} 
+ .navLink.active{
+  text-decoration: none;
+  color: purple; 
+   font-size: 20px;
+  
+ }
+img{
+  width: 5%;
+  height: 180%;
+  mix-blend-mode: multiply;
+  margin-left: 20px;
+} 
+.order{
+  margin: 30px 20px;
+}
+.n{
+  width: 100%;
+  
+}
+.n1{ 
+   text-decoration: none;
+  display: inline;
+  margin: 10px 20px;
+  font-size: 20px;
+  color: black;
+  border-bottom: 4px solid rgb(0, 149, 255);
+  border-radius: 4px;
+
+} 
+ .div{
+  margin: 20px ;
+} 
+ .loginContainer{
+  margin: auto ;
+   margin-top: 20px;
+   position: relative;
+   width: 500px;
+  background:rgb(239, 235, 235); 
+  border-radius: 10px;
+   height: 400px; 
+ } 
+#name{
+  position: absolute;
+  top: 120px;
+  left: 20px;
+  width: 420px;
+  border-radius: 5px;
+  padding: 18px;
+} 
+#password{
+  position: absolute;
+  top: 220px;
+  left: 22px;
+  width: 420px;
+  padding: 18px;
+  border-radius: 5px;
+} 
+.span{
+  position: absolute;
+  top: 200px;
+  right: 27px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+.loginbtn{
+  position: absolute;
+  bottom: 30px;
+  left: 22px;
+  font-size: 20px;
+  color: white;
+  background: blue;
+  padding: 13px;
+  width: 450px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+.email{
+  position: absolute;
+  top: 100px;
+  left: 24px;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.pass{
+  position: absolute;
+  top:200px;
+  left: 24px;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+
+.loginheader{
+  position: absolute;
+  top: 20px;
+  left: 180px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   border-bottom: 8px solid blue; 
+   border-radius: 10px; 
+}
+#checkbox{
+  position: absolute;
+  bottom: 135px;
+  left: 22px;
+  
+ }
+.content{
+  position: absolute;
+  bottom: 100px;
+  left: 40px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+.sigupheader{
+  position: absolute;
+  top: 20px;
+  left: 180px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+ 
+.signupemail{
+  position: absolute;
+  top: 100px;
+  left: 24px;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+ #signupname{
+  position: absolute;
+  top: 120px;
+  left: 20px;
+  width: 420px;
+  border-radius: 5px;
+  padding: 18px;
+
+} 
+ #signuppassword{
+  position: absolute;
+  top: 220px;
+  left: 22px;
+  width: 420px;
+  padding: 18px;
+  border-radius: 5px;
+} 
+ .signuploginbtn{
+  position: absolute;
+  bottom: 30px;
+  left: 22px;
+  font-size: 20px;
+  color: white;
+  background: blue;
+  padding: 13px;
+  width: 450px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+} 
+.signuppass{
+  position: absolute;
+  top:200px;
+  left: 24px;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+} 
+.signupinContainer{
+  margin: auto ;
+  margin-top: 20px;
+  position: relative;
+  width: 500px;
+   background:rgb(240, 238, 238); 
+ border-radius: 9px;
+  height: 450px;
+} 
+.signupbackbtn{
+  margin: 20px 30px;
+} 
+.answerlist{
+  cursor: pointer;
+} 
+ .optionslist{
+   background-color: whitesmoke; 
+   width: 200px;
+  cursor: pointer;
+  list-style: none;
+  line-height: 30px
+} 
+
+ .quizcontainer{
+  margin: 10px 70px;
+} 
+ .question{ 
+  cursor: pointer;
+} 
+ .nextbutton{
+  cursor: pointer;
+  
+} 
+ .select{
+  margin-left: 80px;
+}
+.options{
+  width: 200px;
+  border: 1px solid blue;
+   margin-left: 20px; 
+  }
+.result-container{
+  width:250px;
+  height: 100px;
+  border: 1px solid black;
+  
+}
+.restart{
+  margin: 20px 80px;
+}  
