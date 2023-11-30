@@ -10,6 +10,7 @@ export const WatchList = () => {
     <FontAwesomeIcon icon={faArrowLeft} onClick={()=> navigate('/')} className='text-2xl ml-3 md:w-28 mt-4' />
     WatchList
     <p>This is my watchlist page</p>
+    <h1>I will be completing this page very soon</h1>
   </div>
    
   )

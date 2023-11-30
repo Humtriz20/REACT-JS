@@ -272,13 +272,13 @@ const MovieList = () => {
                   <>
                     <button
                       onClick={() => navigate('/signUp')}
-                      className='bg-theme-300 text-theme-100 w-28 h-8 mt-1 font-bold rounded-sm hidden text-lg text-center md:block'
+                      className='bg-theme-300 text-theme-100 w-28 h-8 mt-1 font-bold rounded-xl hidden text-lg text-center md:block'
                     >
                       Sign Up
                     </button>
                     <button
                       onClick={() => navigate('/login')}
-                      className='bg-theme-300 text-theme-100 w-28 h-8 mt-1 font-bold rounded-sm hidden text-lg text-center md:block'
+                      className='bg-theme-300 text-theme-100 w-28 h-8 mt-1 font-bold rounded-xl hidden text-lg text-center md:block'
                     >
                       Login
                     </button>
@@ -347,18 +347,20 @@ const MovieList = () => {
             </>
           ) : (
             <>
+            <div className='flex flex-col md:flex-none'>
               <button
                 onClick={() => navigate('/login')}
-                className='bg-theme-300 text-theme-100 w-28 h-8 font-bold rounded-full text-lg text-center md:block'
+                className='bg-theme-300 text-theme-100 w-28 h-8 font-bold rounded-xl text-lg text-center md:block'
               >
                 Login
-              </button>
+              </button><br />
               <button
                 onClick={() => navigate('/register')}
-                className='bg-theme-300 text-theme-100 w-28 h-8 font-bold rounded-full text-lg text-center md:block'
+                className='bg-theme-300 text-theme-100 w-28 h-8 font-bold rounded-xl text-lg text-center md:block'
               >
                 Sign up
               </button>
+              </div>
             </>
           )}
         </div>
