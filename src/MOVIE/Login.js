@@ -1,66 +1,67 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { signInWithPopup } from "firebase/auth";
+import Verification from "./Verification";
 
 const Login = () => {
-  const { loginUser, loading, user } = useContext(AuthContext);
+  const { loginUser, loading, user, loginWithGoogle, sendEmailVerification } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [loginError, setLoginError] = useState("");
 
-  // If authentication is still loading, display a loading indicator
-  if (loading) {
-    return (
-      <span className="loading loading-dots loading-lg flex item-center mx-auto"></span>
-    );
-  }
-
-  // If the user is already authenticated, redirect to the home page
-  if (user) {
-    navigate("/");
-  }
-
-  // Handle form submission for user login with validation
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-
-    // Reset error messages
-    setEmailError("");
-    setPasswordError("");
-
-    // Validate email and password
-    if (!email) {
-      setEmailError("Email is required");
-      return;
+  const handleGoogleLogin = async () => {
+    try {
+      await loginWithGoogle();
+      navigate("/");
+    } catch (error) {
+      console.error('Google Login Error:', error.message);
     }
-
-    if (!password) {
-      setPasswordError("Password is required");
-      return;
-    }
-
-    loginUser(email, password)
-      .then((result) => {
-        console.log(result);
-        navigate("/");
-      })
-      .catch((error) => console.log(error.message));
-
-    e.target.reset();
   };
 
-  return (
+  
+ 
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+  
+    try {
+      const result = await loginUser(email, password);
+  
+      console.log("Login Result:", result);
+  
+      if (result && result.user && !result.user.emailVerified) {
+        console.log("User not verified. Sending verification email.");
+        await sendEmailVerification(result.user);
+        navigate("/verification");
+      } else {
+        console.log("User verified. Navigating to homepage.");
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("Login Error:", error.message);
+    }
+  };
+    
+  
+  
+    
+  
 
+  return (
     <div className="min-h-screen bg-base-200 flex items-center justify-center">
-      <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 h-80 border border-theme-500 rounded">
-        <div className="card-body">
+    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 h-80 border border-theme-500 rounded">
+      <div className="card-body">
+        {loading && <span className="loading">Loading...</span>}
+
+        {!loading && !user && (
           <form onSubmit={handleFormSubmit}>
             <div className="mt-12">
-              <label className="">
-                <span className="label-text md:ml-8  text-xl">Email</span>
+              <label>
+                <span className="label-text md:ml-8 text-xl">Email</span>
               </label><br />
               <input
                 type="text"
@@ -90,6 +91,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              <Link to="/forgotten-password">Forgot your password?</Link>
               {passwordError && (
                 <p className="text-sm text-theme-200 mt-1 md:ml-8">{passwordError}</p>
               )}
@@ -98,6 +100,7 @@ const Login = () => {
               <button className="bg-theme-300 text-theme-100 w-16 h-9 text-center rounded md:ml-8 text-xl">
                 Login
               </button>
+              <button onClick={handleGoogleLogin}>Sign in with Google</button>
               <button
                 className="bg-theme-300 text-theme-100 w-24 h-9 rounded text-lg mr-6"
                 onClick={() => navigate("/signUp")}
@@ -106,9 +109,11 @@ const Login = () => {
               </button>
             </div>
           </form>
-        </div>
+        )}
+
       </div>
     </div>
+  </div>
   );
 };
 

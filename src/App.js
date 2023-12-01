@@ -17,6 +17,10 @@ import Navi from './DYNAMIC/Navbar'
 import SignUp from './MOVIE/SignUp'
 import AuthProvider from './MOVIE/AuthProvider';
 import Profile from './MOVIE/Profile'
+import ForgottenPassword from './MOVIE/ForgottenPassword'
+import VerificationCode from './MOVIE/VerificationCode'
+import Verification from './MOVIE/Verification'
+import VerificationComplete from './MOVIE/VerificationComplete'
 
 
 
@@ -44,6 +48,13 @@ export const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path='/searchPage' element={<SearchPage />} />
           <Route path='/profile' element={<Profile />} />
+          <Route path='/forgotten-Password' element={<ForgottenPassword />} />
+          <Route path='/verificationCode' element={<VerificationCode />} />
+          <Route path='/verification' element={<Verification />} />
+          <Route path='/verificationcomplete' element={<VerificationComplete />} />
+
+
+       
           
         </Routes>
        </AuthProvider>

@@ -1,14 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect,useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faPenToSquare,faArrowLeft} from '@fortawesome/free-solid-svg-icons';
-
+import { faTrash,faArrowLeft,faHeart,faXmark } from '@fortawesome/free-solid-svg-icons';
+import VerificationCode from "./VerificationCode"; // Import the VerificationCode component
 
 const SignUp = () => {
   const { createUser, user, loading } = useContext(AuthContext);
-  const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -18,28 +17,28 @@ const SignUp = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  // If authentication is still loading, display a loading indicator
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
+  
   if (loading) {
     return (
       <span className="loading loading-dots loading-lg flex item-center mx-auto"></span>
     );
   }
 
-  // If the user is already authenticated, redirect to the home page
-  if (user) {
-    navigate("/");
-  }
+  
 
-  // Handle form submission for user registration with validation
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    // Reset error messages
     setNameError("");
     setEmailError("");
     setPasswordError("");
 
-    // Validate name, email, and password
     if (!name) {
       setNameError("Name is required");
       return;
@@ -57,11 +56,10 @@ const SignUp = () => {
 
     createUser(email, password)
       .then((result) => {
-        // Update user profile with display name
         updateProfile(result.user, {
           displayName: name,
         });
-        navigate("/");
+        navigate("/verificationCode");
         console.log(result);
       })
       .catch((error) => {
@@ -70,6 +68,7 @@ const SignUp = () => {
 
     e.target.reset();
   };
+
 
   return (
     <>
