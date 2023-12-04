@@ -93,39 +93,10 @@ const Login = () => {
  
   
   
-  // const handleFormSubmit = (e) => {
-  //   e.preventDefault();
-  //    // Reset previous messages
-  //    setLoginError("");
-
-  //    const email = e.target.email.value;
-  //    const password = e.target.password.value;
-
-  //    if (!email || !password) {
-  //     setLoginError("Please enter both email and password");
-  //     return;
-  //   }
-    
-  //   loginUser(email, password)
-  //     .then((result) => {
-  //       console.log(result);
-      
-  //       navigate("/");
-  //     })
-  //     .catch((error) => {
-  //       // Handle login failure
-  //       console.error("Login failed:", error.message);
-        
-  //     });
-  //   e.target.reset();
-  // };
+ 
   
     
-  // setEmail("");
-  //   setPassword("");
-
-
-  // WrongDetailsError
+  
   return (
 <>
 
