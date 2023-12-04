@@ -1,9 +1,11 @@
 import React, { useEffect,useContext, useState } from "react";
 import { AuthContext } from "./AuthProvider";
 import { updateProfile } from "firebase/auth";
+import {auth} from './FirebaseConfig'
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash,faArrowLeft,faHeart,faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faTrash,faArrowLeft,faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import { sendEmailVerification, createUserWithEmailAndPassword } from "firebase/auth";
 import VerificationCode from "./VerificationCode"; // Import the VerificationCode component
 
 const SignUp = () => {
@@ -16,6 +18,9 @@ const SignUp = () => {
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+
 
   useEffect(() => {
     if (user) {
@@ -29,15 +34,32 @@ const SignUp = () => {
     );
   }
 
+  const registerUser = async (email, password) => {
+    
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await sendEmailVerification(userCredential.user);
+      return userCredential;
+    } catch (error) {
+      
   
-
-
-  const handleFormSubmit = (e) => {
+      // Check if the error is due to the email being already in use
+      if (error.code === "auth/email-already-in-use") {
+        throw new Error("The email address is already in use. Please use a different email.");
+      } else {
+        // If it's a different error, rethrow it
+        throw error;
+      }
+    }
+  };
+  
+  const handleFormSubmit = async  (e) => {
     e.preventDefault();
 
     setNameError("");
     setEmailError("");
     setPasswordError("");
+    setError("")
 
     if (!name) {
       setNameError("Name is required");
@@ -54,35 +76,47 @@ const SignUp = () => {
       return;
     }
 
-    createUser(email, password)
-      .then((result) => {
-        updateProfile(result.user, {
-          displayName: name,
-        });
-        navigate("/verificationCode");
-        console.log(result);
-      })
-      .catch((error) => {
-        console.log(error);
+    try {
+      const result = await registerUser(email, password);
+      await updateProfile(result.user, {
+        displayName: name,
       });
+      navigate("/verificationCode");
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+      setError(error.message);
+    }
+  
 
     e.target.reset();
   };
 
+  
+
+
 
   return (
     <>
-    <div>
-    <FontAwesomeIcon icon={faArrowLeft} onClick={()=> navigate('/login')} className='text-2xl ml-3 md:w-28 mt-4' />
+    <div className="bg-theme-700">
+    <FontAwesomeIcon icon={faArrowLeft} onClick={()=> navigate('/login')} className='text-2xl ml-3 md:w-28 mt-4 text-theme-100' />
   </div>
-    <div className="min-h-screen bg-base-200 flex items-center justify-center">
-      <div className="card flex-shrink-0 h-80 w-full max-w-md shadow-2xl bg-base-100">
-        <div className="card-body">
+ 
+    <div className="min-h-screen bg-base-200 flex items-center justify-center  bg-theme-700 font-bold">
+      
+      <div className="card flex-shrink-0 h-96 w-full max-w-md shadow-2xl bg-base-100 bg-theme-100 rounded-xl">
+        <div className="card-body mt-6">
           <form onSubmit={handleFormSubmit}>
+          <div className="bg-theme-100 w-96 md:ml-8">
+            {error && (
+              <p className="text-sm text-theme-200 mt-1">{error}</p>
+            )}
+        </div>
             <div className="ml-8">
               <label className="label">
                 <span className="label-text">Name</span><br />
               </label>
+              
               <input
                 type="text"
                 name="name"
@@ -97,7 +131,7 @@ const SignUp = () => {
                 <p className="text-sm text-theme-200 mt-1">{nameError}</p>
               )}
             </div>
-            <div className="ml-8">
+            <div className="ml-8 ">
               <label className="label">
                 <span className="label-text">Email</span><br />
               </label>
@@ -115,31 +149,45 @@ const SignUp = () => {
                 <p className="text-sm text-theme-200 mt-1">{emailError}</p>
               )}
             </div>
-            <div className="ml-8">
+            <div className="ml-8 relative">
               <label className="label">
                 <span className="label-text">Password</span><br />
               </label>
+                
               <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                className={`p-3 w-96  h-12 rounded  border border-theme-500 input input-bordered ${
-                  passwordError ? "border-theme-700" : "border-theme-500"
-                }`}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Password"
+                  className={`p-3 w-96 h-12 rounded border border-theme-500 input input-bordered ${
+                    passwordError ? "border-theme-700" : "border-theme-500"
+                  }`}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <button
+                  type="button"
+                  className="absolute top-12 transform -translate-y-1/2 right-12 cursor-pointer"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  <FontAwesomeIcon
+                    icon={showPassword ? faEye : faEyeSlash}
+                    className="text-theme-500"
+                  />
+                </button>
+              
               {passwordError && (
                 <p className="text-sm text-theme-200 mt-1 ">{passwordError}</p>
               )}
             </div>
             <div className="ml-20 mt-6">
-              <button className="bg-theme-300 text-theme-100 w-72 h-9  rounded">Sign Up</button>
+              <button className="bg-theme-300 text-theme-100 w-72 h-9  rounded-full">Sign Up</button>
             </div>
           </form>
         </div>
       </div>
+      
     </div>
+    
     </>
   );
 };

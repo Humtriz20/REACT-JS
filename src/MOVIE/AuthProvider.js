@@ -11,6 +11,7 @@ import {
   updateProfile,
   sendPasswordResetEmail,
   signInWithPopup,
+  fetchSignInMethodsForEmail
 } from "firebase/auth";
 
 import { auth, storage, app } from "./FirebaseConfig";
@@ -68,6 +69,9 @@ export const AuthProvider = ({ children }) => {
     logOut,
     loading,
     loginWithGoogle,
+    setUser,
+    setLoading,
+    sendEmailVerification
   };
 
   return (

@@ -21,6 +21,7 @@ import ForgottenPassword from './MOVIE/ForgottenPassword'
 import VerificationCode from './MOVIE/VerificationCode'
 import Verification from './MOVIE/Verification'
 import VerificationComplete from './MOVIE/VerificationComplete'
+import LoadingWelcome from './MOVIE/LoadingWelcome';
 
 
 
@@ -30,8 +31,7 @@ import VerificationComplete from './MOVIE/VerificationComplete'
 // import { items } from './itemsData';
 
 export const App = () => {
-  
-  
+ 
   return (
   
     
@@ -52,9 +52,7 @@ export const App = () => {
           <Route path='/verificationCode' element={<VerificationCode />} />
           <Route path='/verification' element={<Verification />} />
           <Route path='/verificationcomplete' element={<VerificationComplete />} />
-
-
-       
+          
           
         </Routes>
        </AuthProvider>
