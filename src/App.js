@@ -22,6 +22,7 @@ import VerificationCode from './MOVIE/VerificationCode'
 import Verification from './MOVIE/Verification'
 import VerificationComplete from './MOVIE/VerificationComplete'
 import LoadingWelcome from './MOVIE/LoadingWelcome';
+import { Table } from './TABLE/Table'
 
 
 
@@ -55,6 +56,7 @@ export const App = () => {
           
           
         </Routes>
+        {/* <Table /> */}
        </AuthProvider>
       <div>
 

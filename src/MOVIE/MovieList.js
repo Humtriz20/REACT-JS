@@ -128,7 +128,7 @@ const MovieList = () => {
               <img
                 src={movie.Poster}
                 alt={`${movie.Title} Poster`}
-                className='rounded-lg w-32 sm:w-40 md:w-64'
+                className='rounded-lg w-32 sm:w-40 md:w-64 hover:scale-110 '
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
               />
