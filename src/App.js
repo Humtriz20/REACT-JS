@@ -24,6 +24,7 @@ import VerificationComplete from './MOVIE/VerificationComplete'
 import LoadingWelcome from './MOVIE/LoadingWelcome';
 import { Table } from './TABLE/Table'
 import { Modal } from './TABLE/Modal'
+import { ImageCardSlider } from './TABLE/ImageCardSlider'
 
 
 
@@ -41,7 +42,7 @@ export const App = () => {
      <div>
       {/* <Navi /> */}
       <AuthProvider>
-        <Routes>
+        {/* <Routes>
           <Route path='/favorite' element={<Favorites />} />
           <Route path="/"  element={<MovieList />} />
           <Route path="/movie/:id" element={<MovieDetails />} />
@@ -53,12 +54,11 @@ export const App = () => {
           <Route path='/forgotten-Password' element={<ForgottenPassword />} />
           <Route path='/verificationCode' element={<VerificationCode />} />
           <Route path='/verification' element={<Verification />} />
-          <Route path='/verificationcomplete' element={<VerificationComplete />} />
-          
-          
-        </Routes>
+          <Route path='/verificationcomplete' element={<VerificationComplete />} /> 
+        </Routes> */}
         {/* <Modal /> */}
         {/* <Table /> */}
+       <ImageCardSlider />
        </AuthProvider>
       <div>
 

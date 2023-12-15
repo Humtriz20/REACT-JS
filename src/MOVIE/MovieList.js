@@ -278,7 +278,7 @@ const MovieList = () => {
                     </button>
                     <button
                       onClick={() => navigate('/login')}
-                      className='bg-theme-300 text-theme-100 w-28 h-8 mt-1 font-bold rounded-xl hidden text-lg text-center md:block'
+                      className='bg-theme-100 border-theme-300 text-theme-300 w-28 h-8 mt-1  rounded-xl hidden text-lg text-center md:block'
                     >
                       Login
                     </button>
