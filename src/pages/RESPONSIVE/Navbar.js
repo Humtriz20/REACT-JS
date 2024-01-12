@@ -8,16 +8,16 @@ import { HashLink as Link } from 'react-router-hash-link';
   
  const [isOpen, setIsOpen] = useState(false);
    return (
-     <nav className=" bg-theme-700 ">
-      <div className='w-10/12 mx-auto h-20 text-theme-100 flex items-center'>
+     <nav className=" bg-theme-100 ">
+      <div className='w-10/12 mx-auto h-16 text-theme-700 flex items-center'>
         <div className="w-1/4">
           {/* logo */}
-         <h1 className="font-bold text-theme-100 ">Hum<span className="text-theme-900">triz.</span></h1>
+         <h1 className="font-bold text-theme-700 ">Hum<span className="text-theme-900">triz.</span></h1>
         </div>
       
           
           <div className='w-2/3'>
-          <ul className="flex gap-14 justify-end text-l"> 
+          <ul className="flex gap-14 justify-end text-l mt-2"> 
             <li  className="hover:text-theme-900 font-bold hidden md:block "><Link smooth to="#home">Home</Link></li> 
             <li  className="hover:text-theme-900 font-bold hidden md:block "><Link smooth to="#about">About</Link></li> 
             <li  className="hover:text-theme-900 font-bold hidden md:block " ><Link smooth to='#skills'>Skills</Link></li>
@@ -27,13 +27,13 @@ import { HashLink as Link } from 'react-router-hash-link';
             
         </div>
         {/* hamburgerIcon and close Icon */}
-        <div className=" flex md:hidden ">
+        <div className=" flex md:hidden  ">
               <button onClick={() => setIsOpen(!isOpen)} type="button" className=" inline-flex items-center justify-center rounded-md"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
               >
                 {!isOpen ? (
-                  <svg className="block h-6 w-6"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"stroke="currentColor" aria-hidden="true" >
+                  <svg className="block h-6 w-6 "  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"stroke="currentColor" aria-hidden="true" >
                     <path strokeLinecap="round"strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"/>
                   </svg>
                 ) : (

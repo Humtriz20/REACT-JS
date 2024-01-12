@@ -10,21 +10,24 @@ import MovieDetails from './MOVIE/MovieDetails';
 import Favorites from './MOVIE/Favorite'
 // import { Navba } from './MOVIE/Navba';
 import './index.css'; // Import index.css
-import { WatchList } from './MOVIE/WatchList'
-import Login from './MOVIE/Login'
-import SearchPage from './MOVIE/SearchPage'
-import Navi from './DYNAMIC/Navbar'
-import SignUp from './MOVIE/SignUp'
-import AuthProvider from './MOVIE/AuthProvider';
-import Profile from './MOVIE/Profile'
-import ForgottenPassword from './MOVIE/ForgottenPassword'
-import VerificationCode from './MOVIE/VerificationCode'
-import Verification from './MOVIE/Verification'
-import VerificationComplete from './MOVIE/VerificationComplete'
-import LoadingWelcome from './MOVIE/LoadingWelcome';
-import { Table } from './TABLE/Table'
-import { Modal } from './TABLE/Modal'
-import { ImageCardSlider } from './TABLE/ImageCardSlider'
+// import { WatchList } from './MOVIE/WatchList'
+// import Login from './MOVIE/Login'
+// import SearchPage from './MOVIE/SearchPage'
+// import Navi from './DYNAMIC/Navbar'
+// import SignUp from './MOVIE/SignUp'
+// import AuthProvider from './MOVIE/AuthProvider';
+// import Profile from './MOVIE/Profile'
+// import ForgottenPassword from './MOVIE/ForgottenPassword'
+// import VerificationCode from './MOVIE/VerificationCode'
+// import Verification from './MOVIE/Verification'
+// import VerificationComplete from './MOVIE/VerificationComplete'
+// import LoadingWelcome from './MOVIE/LoadingWelcome';
+// import { Table } from './TABLE/Table'
+// import { Modal } from './TABLE/Modal'
+// import { ImageCardSlider } from './TABLE/ImageCardSlider'
+import { Homepage } from './pages/Homepage'
+import { Navbar } from './pages/Navbar'
+
 
 
 
@@ -40,8 +43,8 @@ export const App = () => {
     
     
      <div>
-      {/* <Navi /> */}
-      <AuthProvider>
+      <Navbar />
+      {/* <AuthProvider> */}
         {/* <Routes>
           <Route path='/favorite' element={<Favorites />} />
           <Route path="/"  element={<MovieList />} />
@@ -58,8 +61,9 @@ export const App = () => {
         </Routes> */}
         {/* <Modal /> */}
         {/* <Table /> */}
-       <ImageCardSlider />
-       </AuthProvider>
+       {/* <ImageCardSlider /> */}
+       <Homepage />
+       {/* </AuthProvider> */}
       <div>
 
      </div>
